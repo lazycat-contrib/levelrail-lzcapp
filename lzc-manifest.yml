@@ -1,0 +1,23 @@
+application:
+  subdomain: levelrail
+  background_task: true
+  upstreams:
+    - location: /
+      backend: http://levelrail:8080/
+services:
+  levelrail:
+    # upstream: ghcr.io/glincker/levelrail:v1.4.0
+    image: ghcr.1ms.run/glincker/levelrail:v1.4.0
+    environment:
+      - APP_DATA_DIR=/var/lib/levelrail-data
+      - APP_ADMIN_USERNAME=levelrail
+      - APP_ADMIN_PASSWORD={{ stable_secret "levelrail_admin_password" }}
+    binds:
+      - /lzcapp/var/data:/var/lib/levelrail-data
+    mem_limit: 1g
+usage: |
+  Levelrail 是一个自托管部署平台（git push 即部署），通过 Docker socket 管理宿主容器，仅应授权可信管理员使用（应用已设为管理员入口 admin_only）。
+  首次登录账号 levelrail，密码为 {{ stable_secret "levelrail_admin_password" }}；登录后建议立即在应用内修改密码。
+  首次安装需要宿主机存在 /var/run/docker.sock 并允许容器访问（compose_override 挂载）。
+  应用内置的 Caddy 边缘入口监听 80/443，用于部署应用的对 ingress；Levelrail 自身的 HTTPS（Let's Encrypt）在懒猫微服网关下不可用，部署应用请走懒猫域名/内网地址。
+  请勿在应用内执行自更新；版本由打包仓库 GitHub Actions 跟随上游自动更新。

@@ -1,0 +1,28 @@
+package: community.lazycat.app.levelrail
+version: 1.4.0
+name: Levelrail
+description: "Lightweight, self-hosted deployment platform: git push to production on your own servers, with build queue, rollbacks, preview environments, managed databases and built-in observability. One Go binary, no Kubernetes (Apache-2.0)."
+min_os_version: 1.5.0
+homepage: https://github.com/glincker/levelrail
+author: glincker
+license: Apache-2.0
+admin_only: true
+unsupported_platforms:
+  - ios
+  - android
+  - tvos
+locales:
+  zh:
+    name: "Levelrail"
+    description: "轻量级自托管部署平台：git push 即上生产，自带构建队列、回滚、预览环境、托管数据库与可观测性。单 Go 二进制，无需 Kubernetes（Apache-2.0）。"
+  zh_CN:
+    name: "Levelrail"
+    description: "轻量级自托管部署平台：git push 即上生产，自带构建队列、回滚、预览环境、托管数据库与可观测性。单 Go 二进制，无需 Kubernetes（Apache-2.0）。"
+  en:
+    name: "Levelrail"
+    description: "Lightweight, self-hosted deployment platform: git push to production, with build queue, rollbacks, preview environments, managed databases and built-in observability. One Go binary, no Kubernetes (Apache-2.0)."
+permissions:
+  required:
+    - net.internet
+    - net.lan
+    - compose.override

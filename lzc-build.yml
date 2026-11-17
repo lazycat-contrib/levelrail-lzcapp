@@ -1,0 +1,13 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./dist
+icon: ./icon.png
+compose_override:
+  services:
+    levelrail:
+      group_add:
+        - "999"
+      volumes:
+        - source: /var/run/docker.sock
+          target: /var/run/docker.sock
+          type: bind
+          read_only: false

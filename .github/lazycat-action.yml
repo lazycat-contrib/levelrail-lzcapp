@@ -1,0 +1,40 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: levelrail
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: levelrail
+    target: service
+    service: levelrail
+    source: ghcr.io/glincker/levelrail
+    channel: custom
+    sort: semver
+    tag_regex: '^v[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Levelrail
+    summary: 轻量级自托管部署平台：git push 即部署，构建队列、回滚、预览环境、托管数据库与可观测性，单 Go 二进制无需 Kubernetes。
