@@ -1,5 +1,5 @@
 package: community.lazycat.app.levelrail
-version: 1.5.6
+version: 1.5.7
 name: Levelrail
 description: "Lightweight, self-hosted deployment platform: git push to production on your own servers, with build queue, rollbacks, preview environments, managed databases and built-in observability. One Go binary, no Kubernetes (Apache-2.0)."
 min_os_version: 1.5.0
