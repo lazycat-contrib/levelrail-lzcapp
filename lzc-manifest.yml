@@ -6,8 +6,8 @@ application:
       backend: http://levelrail:8080/
 services:
   levelrail:
-    # upstream: ghcr.io/glincker/levelrail:v1.5.9
-    image: ghcr.1ms.run/glincker/levelrail:v1.5.9
+    # upstream: ghcr.io/glincker/levelrail:v1.5.10
+    image: ghcr.1ms.run/glincker/levelrail:v1.5.10
     environment:
       - APP_DATA_DIR=/var/lib/levelrail-data
       - APP_ADMIN_USERNAME=levelrail
